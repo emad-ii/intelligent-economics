@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discounting — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · Link 2 read along the clock</p>
+    <h1>Exponential discounting <span class="badge forced">forced</span></h1>
+    <p class="lede">A stationary weighting of delayed value satisfies the Cauchy equation of Link 2. The measurable non-vanishing solutions are exponential. Time-consistency is independence, applied to time.</p>
+    <p>The paper recovers exponential discounting as the same theorem as Link 2, read along the clock (Table 3; section 5). Link 2 is independence: when value adds over independent components, choice multiplies, which forces the Cauchy equation. Along the clock the same equation is a stationary weight on delay:</p>
+    <p>$$w(t+s)=w(t)\,w(s)$$</p>
+    <p>so the weight is $w(t)=e^{-\delta t}$. The dividend, in the paper&rsquo;s one line: <em>time-consistency as independence</em>.</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>The forced weight</h2>
+        <div class="controls">
+          <label class="ctrl">Discount rate $\delta$
+            <span class="val" id="delta-val"></span>
+            <input id="delta" type="range" min="0.05" max="1.20" step="0.01" value="0.30">
+          </label>
+          <label class="ctrl">Horizon $T$
+            <span class="val" id="horizon-val"></span>
+            <input id="horizon" type="range" min="2" max="16" step="0.1" value="8">
+          </label>
+          <label class="ctrl">Split $t$, with $s=T-t$
+            <span class="val" id="split-val"></span>
+            <input id="split" type="range" min="0.2" max="7.8" step="0.1" value="3">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Discount weights against delay"></svg>
+        <p class="legend"><span>filled: $w(t+s)$</span><span>open: $w(t)w(s)$</span> <span><i class="exp"></i> $e^{-\delta t}$, solves Cauchy</span> <span><i class="alt"></i> $1/(1+\delta t)$, does not</span></p>
+      </section>
+      <section class="panel">
+        <h2>Independence along the clock</h2>
+        <p>Pick a delay $t$ and a further delay $s$. Independence requires $w(t+s)=w(t)w(s)$.</p>
+        <div class="eqbox ok">
+          <div class="label">Exponential — equation holds</div>
+          <div class="nums" id="exp-eq"></div>
+        </div>
+        <div class="eqbox bad">
+          <div class="label">Non-exponential alternative — independence breaks</div>
+          <div class="nums" id="alt-eq"></div>
+        </div>
+        <p>The alternative is not a theory in the paper. It is a weight that is not a solution of the Cauchy equation. The residual is the failure of independence.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 5: a stationary weighting of delayed value satisfies $w(t+s)=w(t)\,w(s)$, the Cauchy equation of Link 2 again, so the weight is $e^{-\delta t}$ and time-consistency is the independence requirement applied to time. Table 3 lists the recovery as forced, and the interest it returns as time-consistency as independence.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 5 (Link 2). PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/discounting.js"></script>
+</body>
+</html>
