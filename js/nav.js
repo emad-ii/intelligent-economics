@@ -13,6 +13,9 @@
     { href: prefix + "derivations/akerlof.html", file: "akerlof.html", label: "Akerlof" },
     { href: prefix + "derivations/nash.html", file: "nash.html", label: "Nash" },
     { href: prefix + "derivations/euler.html", file: "euler.html", label: "Euler" },
+    { href: prefix + "derivations/black-scholes.html", file: "black-scholes.html", label: "Black–Scholes" },
+    { href: prefix + "derivations/landauer.html", file: "landauer.html", label: "Landauer" },
+    { href: prefix + "derivations/lucas.html", file: "lucas.html", label: "Lucas" },
     { href: prefix + "derivations/discounting.html", file: "discounting.html", label: "Discounting" },
     { href: prefix + "derivations/coase.html", file: "coase.html", label: "Coase" },
     { href: prefix + "sources.md", file: "sources.md", label: "Sources" }

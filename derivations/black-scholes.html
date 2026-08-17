@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Black–Scholes — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · Film IV on ie.ii.inc</p>
+    <h1>Black–Scholes <span class="badge identified">identified</span></h1>
+    <p class="lede">In the complete Black–Scholes setting the risk-neutral measure is the Girsanov exponential tilt of the physical measure of asset returns, the same structural move fixed by no-arbitrage rather than by preference, at a relative-entropy cost of the same form as the complexity cost $C$. Completeness makes that measure unique. Incompleteness prices the reference.</p>
+    <p>The paper identifies the complete market's minimal-entropy measure with the forced exponential tilt, the constraint now no-arbitrage (Table 3; section 5; film IV). No option formula is written in the paper, and none is added here.</p>
+    <p>$$\rho^*\propto\mu\,e^{\lambda R}\qquad\text{s.t. no-arbitrage},\qquad C=\tau\,D_{\mathrm{KL}}(\rho^*\Vert\mu)$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Girsanov tilt of the physical measure</h2>
+        <div class="controls">
+          <label class="check"><input id="complete" type="checkbox" checked> Complete market (two states; unique measure)</label>
+          <label class="ctrl">Physical up-weight $\mu(\mathrm{up})$
+            <span class="val" id="p-val"></span>
+            <input id="pup" type="range" min="0.12" max="0.80" step="0.01" value="0.55">
+          </label>
+          <label class="ctrl">Physical down-weight $\mu(\mathrm{down})$
+            <span class="val" id="pd-val"></span>
+            <input id="pdown" type="range" min="0.08" max="0.50" step="0.01" value="0.20">
+          </label>
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.15" max="2.40" step="0.05" value="1.00">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Physical measure and Girsanov tilt"></svg>
+        <p class="legend"><span><i class="exp"></i> $\rho^*$, min-entropy / Girsanov</span><span><i class="alt"></i> physical $\mu$</span> <span>dash: numeraire $E[R]=1$</span></p>
+        <p class="note">Returns on a small discrete support, numeraire normalised so no-arbitrage is $E_{\rho}[R]=1$. Two states: unique equivalent measure. Three states: a family of them; the exponential tilt of $\mu$ is the complete market's move, now picking among them. The returns $\{0.80,1.05,1.25\}$ are illustrative; the tilt, the uniqueness, and $C=\tau D_{\mathrm{KL}}$ are the paper's. No Black–Scholes formula is drawn.</p>
+      </section>
+      <section class="panel">
+        <h2>Incompleteness prices the reference</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$E_{\mu}[R]$</div><div class="v" id="em-stat"></div></div>
+          <div class="stat"><div class="k">$E_{\rho^*}[R]$</div><div class="v" id="er-stat"></div></div>
+          <div class="stat"><div class="k">$D_{\mathrm{KL}}(\rho^*\Vert\mu)$</div><div class="v" id="kl-stat"></div></div>
+          <div class="stat"><div class="k">$C=\tau D_{\mathrm{KL}}$</div><div class="v" id="c-stat"></div></div>
+        </div>
+        <div class="eqbox ok" id="tilt-box">
+          <div class="label">Girsanov exponential tilt</div>
+          <div class="nums" id="tilt-eq"></div>
+        </div>
+        <div class="eqbox" id="comp-box">
+          <div class="label">Completeness</div>
+          <div class="nums" id="comp-eq"></div>
+        </div>
+        <div class="eqbox" id="ref-box">
+          <div class="label">What Table 3 returns</div>
+          <div class="nums" id="ref-eq"></div>
+        </div>
+        <p>Leave the market complete and drag the physical weights: $\rho^*$ stays put, only the relative-entropy cost moves. Switch the market incomplete: the same slider now moves $\rho^*$ itself. That is incompleteness pricing the reference. $\tau$ prices the KL, the same form as $C$; it does not write an option.</p>
+      </section>
+    </div>
+
+    <h2>What the paper states</h2>
+    <p>From section 5: in the complete Black–Scholes setting [Black and Scholes, 1973], the risk-neutral measure is the Girsanov exponential tilt of the physical measure of asset returns, the same structural move fixed by no-arbitrage rather than by preference, at a relative-entropy cost of the same form as the complexity cost $C$. Table 3 lists the recovery as the complete market's minimal-entropy measure, and the interest it returns as incompleteness prices the reference.</p>
+    <p>From the boxed result of section 5.1: the physical measure tilted to no-arbitrage gives Black–Scholes. The unifying fact is structural: bounded-rational choice, the risk-neutral measure, and the maximum-entropy logit are one object, the unique exponential tilt of a reference fixed by a constraint, and the classical equations are what it yields under the references each field assumes. Film IV on <a href="https://ie.ii.inc">ie.ii.inc</a> is that no-arbitrage tilt. The site recovery map names the same row: complete markets assumed; the tilt's relative-entropy cost has the same form as $C$.</p>
+    <p>The paper does not write a call price, a PDE, or a $d_1,d_2$ formula. Those setting-specific constructions are not added here. Path-space Girsanov already priced $K_{\mathrm{info}}$ in section 3; this page is the asset-return identification, not a second kinetic term.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 5 (Black and Scholes 1973). Film IV: <a href="https://ie.ii.inc">ie.ii.inc</a>. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/black-scholes.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landauer — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">§7.1 · Part V · Table 3</p>
+    <h1>Landauer's bound <span class="badge identified">identified</span></h1>
+    <p class="lede">Erasing a bit takes a two-state distribution to a single state. Against a uniform reference that raises $D_{\mathrm{KL}}(\rho\Vert\mu)$ by exactly $\ln 2$, and $C=\tau\,D_{\mathrm{KL}}$ charges $\tau$ per nat, so the cost is $\tau\ln 2$. Physically instantiated against the Gibbs state, $\tau$ is $k_B T$ and $\tau\ln 2=k_B T\ln 2$: Landauer's bound. The identification is an inheritance.</p>
+    <p>The form $\tau\ln 2$ is forced by the complexity cost already in the free energy. The magnitude is the physical identification $\tau=k_B T$ (section 7.1; Part V; Table 3). That is the physical floor of $C$.</p>
+    <p>$$\tau\ln 2=k_B T\ln 2$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>One-bit support reduction</h2>
+        <div class="controls">
+          <label class="ctrl">Erasure (mass on one state)
+            <span class="val" id="erase-val"></span>
+            <input id="erase" type="range" min="0.50" max="1.00" step="0.01" value="1.00">
+          </label>
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.15" max="2.40" step="0.05" value="1.00">
+          </label>
+          <label class="check"><input id="physical" type="checkbox"> Physical instantiation ($\tau=k_B T$)</label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Two-state erasure against a uniform reference"></svg>
+        <p class="legend"><span><i class="exp"></i> $\rho$ after the reduction</span><span><i class="alt"></i> uniform $\mu$</span> <span>full erase: $D_{\mathrm{KL}}=\ln 2$</span></p>
+        <p class="note">Two equiprobable states, uniform reference, as the paper writes. The slider opens the support reduction; at $1$ the mass sits on a single state and $D_{\mathrm{KL}}=\ln 2$ exactly. $k_B=1$ in the units where the information and energy numeraires coincide. No joule conversion is added; the paper locates the floor in form, and in magnitude by the identification.</p>
+      </section>
+      <section class="panel">
+        <h2>Physical floor of $C$</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$D_{\mathrm{KL}}(\rho\Vert\mu)$</div><div class="v" id="kl-stat"></div></div>
+          <div class="stat"><div class="k">$\ln 2$</div><div class="v" id="ln2-stat"></div></div>
+          <div class="stat"><div class="k">$C=\tau D_{\mathrm{KL}}$</div><div class="v" id="c-stat"></div></div>
+          <div class="stat"><div class="k">floor</div><div class="v" id="floor-stat"></div></div>
+        </div>
+        <div class="eqbox ok" id="form-box">
+          <div class="label">Forced form</div>
+          <div class="nums" id="form-eq"></div>
+        </div>
+        <div class="eqbox" id="id-box">
+          <div class="label">Physical identification — inheritance</div>
+          <div class="nums" id="id-eq"></div>
+        </div>
+        <div class="eqbox" id="floor-box">
+          <div class="label">What Table 3 returns</div>
+          <div class="nums" id="floor-eq"></div>
+        </div>
+        <p>Drag the erasure to a point mass. $C$ reads $\tau\ln 2$. Switch on the physical instantiation: the same number is $k_B T\ln 2$, Landauer's bound, because $\tau$ has been identified with the thermodynamic temperature. The machine's $c_{\mathrm{sub}}$ falls toward that floor; the human's sits far above it and is metabolically pinned. Both floors are this $C$.</p>
+      </section>
+    </div>
+
+    <h2>What the paper states</h2>
+    <p>From section 7.1: erasing a bit takes a distribution supported on two equiprobable states to one supported on a single state. Against a uniform two-state reference this erasure raises $D_{\mathrm{KL}}(\rho\Vert\mu)$ by exactly $\ln 2$ nats, and the complexity cost $C=\tau D_{\mathrm{KL}}$ of the free energy charges $\tau$ per nat, so the cost of the erasure is $\tau\ln 2$. When the computation is physically instantiated at temperature $T$ with the reference taken as the physical Gibbs state, the information temperature $\tau$ is the thermodynamic temperature $k_B T$, and the cost is $\tau\ln 2=k_B T\ln 2$, which is Landauer's bound.</p>
+    <p>The identification is an inheritance: the nonequilibrium free energy of a physically instantiated distribution exceeds its equilibrium value by exactly $k_B T$ times the KL divergence from the Gibbs state [Parrondo et al., 2015], which is the complexity cost $C$ evaluated against the physical reference. Under the identification of the information temperature $\tau$ with the thermodynamic temperature $k_B T$, which holds when computation is physically instantiated against the Gibbs state, the KL term of the free energy evaluated on a one-bit support reduction returns Landauer's cost directly. The thermodynamic floor on $c_{\mathrm{sub}}$ is therefore located in form by the framework and in magnitude by the physical identification: the machine's instantiation cost falls toward $k_B T\ln 2$ per irreversible operation, the human's sits far above it and is metabolically pinned, and both floors are the same complexity cost the chain already forced.</p>
+    <p>Table 3 lists the recovery as two states, $\tau=k_B T$, and the interest it returns as the physical floor of $C$. Part V on <a href="https://ie.ii.inc">ie.ii.inc</a> is that floor. The form $\tau\ln 2$ is forced; the magnitude comes from identifying the information temperature with the physical one.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 7.1 (Landauer 1961; Parrondo et al. 2015). PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/landauer.js"></script>
+</body>
+</html>

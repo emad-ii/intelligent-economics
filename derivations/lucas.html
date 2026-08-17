@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucas / Dual Engine — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">§5.1 · Fig. 6 on ie.ii.inc</p>
+    <h1>Lucas / Dual Engine <span class="badge forced">forced</span></h1>
+    <p class="lede">A policy change is a change in $V$. Within a round the realised distribution relaxes toward $\rho^*\propto\mu\,e^{V/\tau}$; across rounds the settled distribution becomes the next reference: $\mu\leftarrow\rho^*$. That Dual Engine is the equation of motion the Lucas critique said was missing. The adaptation rate is a parameter.</p>
+    <p>The across-round map $\mu\leftarrow\rho^*$ is forced (section 5.1; Fig. 6). Slow adaptation recovers fixed expectations; fast adaptation recovers rational expectations; real economies sit between. This page is that motion. The same map with a support-restriction step is Akerlof; that page is separate, and is not re-run here.</p>
+    <p>$$\mu\leftarrow\rho^*,\qquad\rho^*\propto\mu\,e^{V/\tau}$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Within-round tilt, across-round absorb</h2>
+        <div class="controls">
+          <label class="ctrl">Adaptation rate
+            <span class="val" id="alpha-val"></span>
+            <input id="alpha" type="range" min="0" max="1" step="0.02" value="1.00">
+          </label>
+          <label class="ctrl">Rounds absorbed
+            <span class="val" id="round-val"></span>
+            <input id="rounds" type="range" min="0" max="16" step="1" value="0">
+          </label>
+          <label class="ctrl">Policy $V$ (peak)
+            <span class="val" id="v-val"></span>
+            <input id="vpeak" type="range" min="1.0" max="9.0" step="0.1" value="7.0">
+          </label>
+          <label class="ctrl">Prior $\mu$ (peak)
+            <span class="val" id="m-val"></span>
+            <input id="mupeak" type="range" min="1.0" max="9.0" step="0.1" value="3.0">
+          </label>
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.15" max="2.40" step="0.05" value="0.70">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Reference adapting under a policy"></svg>
+        <p class="legend"><span><i class="exp"></i> $\mu$ after the rounds</span><span><i class="alt"></i> this-round $\rho^*$</span> <span>dash: policy peak</span></p>
+        <p class="note">Contingent plans on $\{0,\ldots,10\}$. Start $\mu$ a bump at the prior peak. $V(x)=-\tfrac12(x-v)^2$ is an illustrative policy landscape; a policy change is a change in that peak. The Dual Engine and $\mu\leftarrow\rho^*$ are the paper's. Adaptation rate $0$ holds $\mu$ fixed (the within-round relaxation does not settle far enough to absorb); $1$ is the settled absorb $\mu\leftarrow\rho^*$. The mixture that interpolates is illustrative of incomplete settlement, not a second equation.</p>
+      </section>
+      <section class="panel">
+        <h2>Adaptation rate is a parameter</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$H(\mu)$</div><div class="v" id="h-stat"></div></div>
+          <div class="stat"><div class="k">mean of $\mu$</div><div class="v" id="mean-stat"></div></div>
+          <div class="stat"><div class="k">policy peak</div><div class="v" id="peak-stat"></div></div>
+          <div class="stat"><div class="k">regime</div><div class="v" id="reg-stat"></div></div>
+        </div>
+        <div class="eqbox ok" id="in-box">
+          <div class="label">Within a round — $\mu$ held fixed</div>
+          <div class="nums" id="in-eq"></div>
+        </div>
+        <div class="eqbox" id="across-box">
+          <div class="label">Across rounds — Dual Engine</div>
+          <div class="nums" id="across-eq"></div>
+        </div>
+        <div class="eqbox" id="lim-box">
+          <div class="label">The two limits the critique faced</div>
+          <div class="nums" id="lim-eq"></div>
+        </div>
+        <p>Park the adaptation rate at zero: $\mu$ does not move, fixed expectations. Drive it to one and add rounds: the reference anneals toward a point mass on the policy peak, long-run rational expectations, and the doxic concentration section 8 prices. Move the policy peak; $\mu$ is not invariant. What matters for policy is this rate, which is estimable.</p>
+      </section>
+    </div>
+
+    <h2>What the paper states</h2>
+    <p>From section 5.1: Lucas observed that the parameters of an estimated policy relationship are not invariant to policy: agents' expectations adapt when the regime changes, so an exploited correlation shifts. Rational-expectations macroeconomics answered by assuming expectations are already model-consistent, immune to the critique by construction and empirically too fast. Expectations live in $\mu$, and the dynamics says how the realised distribution adjusts when $V$ changes.</p>
+    <p>Expectations relax to the new equilibrium. A policy change is a change in $V$. Within a round, the realised distribution relaxes toward the new target $\rho^*\propto\mu\,e^{V/\tau}$ by the overdamped Langevin diffusion of Link 4, $dX_t=\nabla\log\rho^*(X_t)\,dt+\sqrt{2}\,dW_t$, at a finite rate set by $\tau$ and the geometry of the score; across rounds, the settled distribution becomes the updated reference, so $\mu$ itself moves by absorbing what the relaxation reaches. The Langevin step within a round holds $\mu$ fixed; it is this across-round update that carries the change in expectations. Iterated to settlement under a fixed policy, the update anneals the reference toward a point mass on the optimum: long-run rational expectations as the limiting case, and, at the limit itself, the doxic concentration whose fragility section 8 prices. The Lucas critique is the statement that $\mu$ is not policy-invariant, and the two steps together provide an equation of motion for the adjustment of expectations the critique says is missing.</p>
+    <p>The dichotomy the standard treatment faces, fixed expectations or instantly rational ones, is the two limits of this one relaxation: slow adaptation recovers fixed expectations, fast adaptation recovers rational expectations, real economies sit between. What matters for policy is the adaptation rate, which is estimable. So the framework turns the Lucas critique from a prohibition on policy analysis into a parameter to be measured. The reference is what the system brings before the current value computation; once a round settles, what it brings to the next round is the distribution the last round left, $\mu\leftarrow\rho^*$. Fig. 6 on <a href="https://ie.ii.inc">ie.ii.inc</a> is that iteration. Table 3 lists rational expectations as the fixed point of $\mu\leftarrow\rho^*$, and the interest it returns as the Lucas critique as motion.</p>
+    <p>The same across-round iteration, run by a system on its own output, is the noiseless skeleton of model collapse [Shumailov et al., 2024]; with a support-restriction step it is Akerlof. Those two readings share the map and have their own page. This page is the Dual Engine and the missing equation of motion.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, section 5.1, Table 3, and Fig. 6 (Lucas 1976). PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/lucas.js"></script>
+</body>
+</html>
