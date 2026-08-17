@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akerlof — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">§6.1 · Fig. 6 on ie.ii.inc</p>
+    <h1>Akerlof <span class="badge identified">identified</span></h1>
+    <p class="lede">Asymmetric information is a support dynamics. The buyer prices average quality under the current reference, sellers above the price exit, and the reference updates to the survivors: $\mu\leftarrow(\mathrm{selection}\circ\mathrm{tilt})$. That is the Lucas box with a support-restriction step.</p>
+    <p>The paper identifies the market for quality with the across-round map already forced as $\mu\leftarrow\rho^*$ (section 6.1; Fig. 6). Akerlof adds one operation: selection tightens the support. The same iteration, without that step, is expectations adjustment; run on a system's own output with finite sampling, it is model collapse. One map wearing three literatures.</p>
+    <p>$$\mu\leftarrow(\mathrm{selection}\circ\mathrm{tilt}),\qquad \rho^*\propto\mu\,e^{V/\tau}$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Selection tightens support</h2>
+        <div class="controls">
+          <label class="ctrl">Map
+            <span class="val" id="map-val"></span>
+            <input id="map" type="range" min="0" max="2" step="1" value="1">
+          </label>
+          <label class="ctrl">Rounds absorbed
+            <span class="val" id="round-val"></span>
+            <input id="rounds" type="range" min="0" max="12" step="1" value="0">
+          </label>
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.15" max="2.40" step="0.05" value="0.80">
+          </label>
+          <label class="ctrl">Finite sample (collapse)
+            <span class="val" id="n-val"></span>
+            <input id="ndraw" type="range" min="20" max="400" step="10" value="80">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Reference over quality"></svg>
+        <p class="legend"><span><i class="exp"></i> $\mu$ after the rounds</span><span><i class="alt"></i> this-round $\rho^*$</span> <span>dash: buyer price</span></p>
+        <p class="note">Quality on $\{0,\ldots,10\}$. Start $\mu$ uniform. $V(q)=q$ is illustrative of a fixed payoff that ranks quality; the map and the three readings are the paper's. Buyer price is average quality under the current reference. Sellers with $q$ above that price exit. Collapse resamples $\rho^*$ with a fixed seed so the slider is stable.</p>
+      </section>
+      <section class="panel">
+        <h2>Adverse selection / collapse of $\mu$</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">price $p$</div><div class="v" id="p-stat"></div></div>
+          <div class="stat"><div class="k">$H(\mu)$</div><div class="v" id="h-stat"></div></div>
+          <div class="stat"><div class="k">support</div><div class="v" id="supp-stat"></div></div>
+          <div class="stat"><div class="k">tail mass</div><div class="v" id="tail-stat"></div></div>
+        </div>
+        <div class="eqbox" id="map-box">
+          <div class="label">This map</div>
+          <div class="nums" id="map-eq"></div>
+        </div>
+        <div class="eqbox" id="sel-box">
+          <div class="label">Support after selection</div>
+          <div class="nums" id="sel-eq"></div>
+        </div>
+        <div class="eqbox">
+          <div class="label">One map, three literatures</div>
+          <div class="nums" id="lit-eq"></div>
+        </div>
+        <p>Drag the map to Lucas: the tilt is absorbed and $\mu$ anneals toward a point mass on the optimum. Leave it on Akerlof: selection sheds the types above the price and the reference collapses down the quality ladder. Switch on collapse: finite sampling zeroes a tail, and no later tilt can restore a region of zero measure.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 6.1: asymmetric information enters the same frame as a support dynamics. In the market for quality [Akerlof, 1970], the buyer prices average quality under the current reference, sellers above the price exit, and the reference updates to the survivors: $\mu\leftarrow(\mathrm{selection}\circ\mathrm{tilt})$, the across-round iteration of the Lucas box with a support-restriction step, so the unravelling cascade of adverse selection is the same annealing that carries expectations to their rational limit and generative models to collapse: one map wearing three literatures.</p>
+    <p>The repair is the openness law applied to markets: warranties and disclosure make quality contractible and thereby pin the support open by commitment, holding the region the iteration would otherwise shed; in the Akerlof benchmark, where gains from trade are positive at every quality, every type then trades. That repair is not simulated here. Signalling admits the temperature-indexed reading, pooling at high $\tau$ and separation as $\tau$ falls [Spence, 1973]; that reading is not simulated here.</p>
+    <p>From section 5.1 and Fig. 6 on <a href="https://ie.ii.inc">ie.ii.inc</a>: the update $\mu\leftarrow\rho^*$ with $\rho^*\propto\mu\,e^{V/\tau}$ is forced; reading Lucas, Akerlof, and model collapse as instances of it is identified. Iterated under a fixed objective the update anneals toward a point mass: long-run rational expectations, and the doxic monoculture whose fragility section 8 prices. The same across-round iteration, run by a system on its own output, is the noiseless skeleton of model collapse [Shumailov et al., 2024]: finite sampling loses the tails the next reference can no longer restore.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, section 6.1, section 5.1, and Fig. 6 (Akerlof 1970; Shumailov et al. 2024). PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/akerlof.js"></script>
+</body>
+</html>

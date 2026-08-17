@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Euler equation — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · recovery-map row on ie.ii.inc</p>
+    <h1>Euler equation <span class="badge forced">forced</span></h1>
+    <p class="lede">Configurations read as contingent plans. An interior mode of $\rho^*$ satisfies $\nabla V=-\tau\nabla\log\mu$. The $\tau\to 0$ mode is the first-order condition of dynamic optimisation, the Euler equation its intertemporal component. At finite $\tau$ the conditions carry the definite correction $-\tau\nabla\log\mu$.</p>
+    <p>The paper recovers the Euler equation as the zero-temperature mode of the forced object (Table 3; section 5). Transversality is supplied as a boundary condition. What $\tau>0$ returns is the doxic score at the price of information.</p>
+    <p>$$\nabla V=-\tau\nabla\log\mu\qquad(\tau\to 0:\ \nabla V=0)$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Mode, and the correction</h2>
+        <div class="controls">
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.04" max="2.40" step="0.02" value="0.55">
+          </label>
+          <label class="ctrl">Doxic peak of $\mu$
+            <span class="val" id="m-val"></span>
+            <input id="mupeak" type="range" min="1.0" max="9.0" step="0.1" value="3.2">
+          </label>
+          <label class="ctrl">Doxic width
+            <span class="val" id="s-val"></span>
+            <input id="width" type="range" min="0.6" max="3.2" step="0.05" value="1.40">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Value, reference, and the mode of rho"></svg>
+        <p class="legend"><span><i class="exp"></i> $\rho^*$</span><span><i class="alt"></i> $\mu$</span> <span>filled: finite-$\tau$ mode</span><span>open: $\tau\to 0$ mode</span></p>
+        <p class="note">Contingent plans on a one-dimensional $x$. Illustrative landscapes: $V(x)=-\tfrac12(x-6.5)^2$, $\mu$ a Gaussian bump. The FOC $\nabla V=-\tau\nabla\log\mu$ and the $\tau\to 0$ limit are the paper's; these particular $V$ and $\mu$ are not. No consumption-Euler formula is written in the paper, and none is added here.</p>
+      </section>
+      <section class="panel">
+        <h2>Forced at $\tau\to 0$</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">mode of $\rho^*$</div><div class="v" id="mode-stat"></div></div>
+          <div class="stat"><div class="k">$\tau\to 0$ mode</div><div class="v" id="class-stat"></div></div>
+          <div class="stat"><div class="k">$-\tau\nabla\log\mu$</div><div class="v" id="corr-stat"></div></div>
+          <div class="stat"><div class="k">FOC residual</div><div class="v" id="res-stat"></div></div>
+        </div>
+        <div class="eqbox ok" id="foc-box">
+          <div class="label">Interior mode — corrected FOC</div>
+          <div class="nums" id="foc-eq"></div>
+        </div>
+        <div class="eqbox" id="lim-box">
+          <div class="label">Euler as $\tau\to 0$</div>
+          <div class="nums" id="lim-eq"></div>
+        </div>
+        <div class="eqbox" id="sign-box">
+          <div class="label">Signed correction at this $\tau$</div>
+          <div class="nums" id="sign-eq"></div>
+        </div>
+        <p>Drag $\tau$ down. The mode of $\rho^*$ walks onto the value peak and the correction vanishes: that is the forced Euler. Raise $\tau$, or move the doxic peak, and $-\tau\nabla\log\mu$ shifts the stationarity condition by a definite signed amount — the pull of the reference at the price of information.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 5: with configurations read as contingent plans (the premise lists plans among them) an interior mode of $\rho^*$ satisfies $\nabla V=-\tau\nabla\log\mu$, so the $\tau\to 0$ mode satisfies the first-order conditions of dynamic optimisation, the Euler equation their intertemporal component, with transversality supplied as a boundary condition. At finite $\tau$ the conditions carry the definite correction $-\tau\nabla\log\mu$, the doxic score at the price of information.</p>
+    <p>Table 3 lists the recovery as forced, recovered by the $\tau\to 0$ mode over contingent plans, and the interest it returns as the correction $-\tau\nabla\log\mu$. The site recovery map on <a href="https://ie.ii.inc">ie.ii.inc</a> names the same row. The paper does not write a consumption-Euler specialisation; that setting-specific construction is not added here.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 5. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/euler.js"></script>
+</body>
+</html>

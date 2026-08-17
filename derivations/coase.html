@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coase — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">§6.2 · Coase slider on ie.ii.inc</p>
+    <h1>The market and the firm <span class="badge identified">identified</span></h1>
+    <p class="lede">A firm is a maintained $\mu$ joined to a joint value function and a residual claimant. The market is coordination at minimal task-specific shared doxa; the firm is coordination by deep shared doxa. The two are poles of one trade-off: maintain a reference, or pay per-transaction tilts across the gap.</p>
+    <p>The paper begins from Coase's question — why islands of conscious coordination persist inside the price system [Coase, 1937] — and treats his accounting answer as accounting. The primitive is the firm as a deliberately built and continuously maintained $\mu_{\mathrm{firm}}$ (section 6.2; the Coase slider on <a href="https://ie.ii.inc">ie.ii.inc</a>). This is not a Table 3 row. No Kramers rate is written in the paper, and none is added here.</p>
+    <p>$$\text{market: minimal shared doxa}\qquad\text{firm: deep shared doxa}$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Boundary / shared-doxa depth</h2>
+        <div class="controls">
+          <label class="ctrl">Reference gap $\Delta$
+            <span class="val" id="delta-val"></span>
+            <input id="delta" type="range" min="0.10" max="2.00" step="0.02" value="0.60">
+          </label>
+          <label class="ctrl">Reference maintenance $M$
+            <span class="val" id="m-val"></span>
+            <input id="maint" type="range" min="10" max="500" step="5" value="120">
+          </label>
+          <label class="ctrl">Load $N$
+            <span class="val" id="n-val"></span>
+            <input id="load" type="range" min="0" max="500" step="5" value="200">
+          </label>
+          <label class="check"><input id="fleet" type="checkbox"> Fleet copies the reference ($M\to 0$, $\Delta_{\mathrm{in}}\to 0$)</label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Market and firm cost against transaction load"></svg>
+        <p class="legend"><span><i class="exp"></i> market, per-transaction tilt</span><span><i class="alt"></i> firm, maintained $\mu$</span> <span>open: illustrative crossing</span></p>
+        <p class="note">The site slider prices the two poles as $N\cdot\tau\cdot\Delta$ against $M+N\cdot\tau\cdot\Delta_{\mathrm{in}}$, with $\tau=1$ and $\Delta_{\mathrm{in}}=0.05$ fixed. Those numbers, and the crossing they draw, are illustrative accounting of the paper's trade-off. They are not a theorem. Shared-doxa depth is the inverse of the gap: $\Delta$ near $0.1$ is near-shared, $\Delta$ near $2$ is strangers.</p>
+      </section>
+      <section class="panel">
+        <h2>Poles of one trade-off</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">market</div><div class="v" id="mkt-stat"></div></div>
+          <div class="stat"><div class="k">firm</div><div class="v" id="firm-stat"></div></div>
+          <div class="stat"><div class="k">cheaper pole</div><div class="v" id="pole-stat"></div></div>
+          <div class="stat"><div class="k">shared-doxa depth</div><div class="v" id="depth-stat"></div></div>
+        </div>
+        <div class="eqbox" id="mkt-box">
+          <div class="label">Market — minimal shared doxa</div>
+          <div class="nums" id="mkt-eq"></div>
+        </div>
+        <div class="eqbox" id="firm-box">
+          <div class="label">Firm — maintained $\mu$</div>
+          <div class="nums" id="firm-eq"></div>
+        </div>
+        <div class="eqbox" id="ai-box">
+          <div class="label">What the identification transfers</div>
+          <div class="nums" id="ai-eq"></div>
+        </div>
+        <p>Deepen the shared doxa (lower $\Delta$) and the market pole cheapens: price can carry the margin against a thinner gap. Raise the gap, or the load, and paying to maintain a reference wins. That is Coase 1937 as a depth, not as a rate. Coase 1960 sits one section earlier: when reallocation is cheap the relaxation reaches $\rho^*$ from any start; when it is dear, initial allocations matter. That reading is not a second interactive.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 6.2: the theory of the firm begins from Coase's question (why do islands of conscious coordination persist inside the price system [Coase, 1937]) and his answer, that firms exist where using the market costs more than using authority, holds as accounting; the primitive lies deeper. A firm is a maintained reference joined to a joint value function and a residual claimant: a deliberately built and continuously maintained $\mu_{\mathrm{firm}}$, a $V$ its members adopt within a zone of acceptance, and a party who owns the difference between value realised and value paid out.</p>
+    <p>Inside a shared reference the agreement machinery operates (tilts are mutually legible and coordination is cheap) so firms are agreement zones; across references only the price survives as a common signal. This is Hayek's thesis [Hayek, 1945] given its formal statement: the market is coordination at minimal task-specific shared doxa, price carrying the margin against a shared institutional background that is itself a $\mu^{(3)}$ concentration, and the firm is coordination by deep shared doxa. The two are poles of one trade-off, between maintaining a reference and paying per-transaction tilts across the gap between references.</p>
+    <p>Inward, the exclusion law applies unchanged: $\mathrm{supp}(\rho^*)=\mathrm{supp}(\mu_{\mathrm{firm}})$, so configurations the corporate reference excludes are unreachable at any internal incentive — the innovator's dilemma as a one-line identity. In the AI transition a fleet of instances of one model shares its reference by weight-copying, so both poles of the trade-off collapse at once; the free shared reference is a monoculture, and the resilience law prices the winning design.</p>
+    <p>From section 5: the Coase theorem [Coase, 1960] reads against the physical component of the kinetic cost: when reallocation is cheap relative to the free-energy differences at stake, the relaxation reaches $\rho^*$ from any initial allocation and the starting point does not matter for efficiency; when it is dear, the relaxation is slow and path-dependent, and initial allocations matter because $\rho^*$ may not be reached in finite time. That is the identification. No quantitative Kramers formula is on the page.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, section 6.2 and section 5 (Coase 1937, Coase 1960). Site slider: <a href="https://ie.ii.inc">ie.ii.inc</a>. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/coase.js"></script>
+</body>
+</html>

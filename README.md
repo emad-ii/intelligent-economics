@@ -28,10 +28,11 @@ Notes-only and absent fields stay off this site.
 ## Add order
 
 1. **Demand / Slutsky, logit, producer** — `forced`, already live on ie.ii.inc / paper Table 3 and §6.1
-2. **Clearing, welfare, Nash** (this commit) — `forced`, Table 3 / Fig. 7 / Part IV / film III
+2. **Clearing, welfare, Nash** — `forced`, Table 3 / Fig. 7 / Part IV / film III
 3. **Discounting** — `forced`
-4. **Stubs**: contracts, mechanism design, matching, growth, money — `identified`
-5. Notes-only and absent fields stay off
+4. **Akerlof, Euler, Coase** (this commit) — Akerlof and Coase `identified` (§6.1 / Fig. 6; §6.2 / site slider); Euler `forced` (Table 3)
+5. **Stubs**: contracts, mechanism design, matching, growth, money — `identified`
+6. Notes-only and absent fields stay off
 
 ## Open locally
 
@@ -58,8 +59,11 @@ then visit `http://localhost:8080/`.
 | [derivations/producer.html](derivations/producer.html) | forced |
 | [derivations/clearing.html](derivations/clearing.html) | forced |
 | [derivations/welfare.html](derivations/welfare.html) | forced |
+| [derivations/akerlof.html](derivations/akerlof.html) | identified |
 | [derivations/nash.html](derivations/nash.html) | forced |
+| [derivations/euler.html](derivations/euler.html) | forced |
 | [derivations/discounting.html](derivations/discounting.html) | forced |
+| [derivations/coase.html](derivations/coase.html) | identified |
 | [derivations/contracts.html](derivations/contracts.html) | identified — stub |
 | [derivations/mechanism-design.html](derivations/mechanism-design.html) | identified — stub |
 | [derivations/matching.html](derivations/matching.html) | identified — stub |
