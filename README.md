@@ -73,5 +73,6 @@ then visit `http://localhost:8080/`.
 | [derivations/matching.html](derivations/matching.html) | identified — stub |
 | [derivations/growth.html](derivations/growth.html) | identified — stub |
 | [derivations/money.html](derivations/money.html) | identified — stub |
+| [formal/](formal/) | SymPy recoveries (discounting, demand/Slutsky); Lean candidate for Link 2 |
 
 No pages for tax/ETI, Solow, cycles, public goods, IV, unemployment, open economy, CAPM, term structure, development, gravity, crypto, or fiscal theory.
