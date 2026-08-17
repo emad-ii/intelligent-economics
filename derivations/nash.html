@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QRE / Nash — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · Film III on ie.ii.inc</p>
+    <h1>QRE / Nash <span class="badge forced">forced</span></h1>
+    <p class="lede">Strategic interaction is the forced object with coupled value functions. A joint fixed point of the coupled tilts is a quantal response equilibrium, and it exists for every $\tau>0$. Nash is the $\tau\to 0$ corner.</p>
+    <p>The paper does not have an agent best-respond to a point. Each agent relaxes to a distribution against the others' distributions (Table 3; section 5.2; film III). The existence argument is cleaner than Nash's own: the softmax is single-valued where the sharp best-response correspondence needs Kakutani.</p>
+    <p>$$\rho_i\propto\mu_i\exp\bigl(\mathbb{E}_{\rho_{-i}}[V_i]/\tau\bigr)$$</p>
+    <p>As $\tau\to 0$ the relaxation sharpens to exact best response and the quantal fixed point limits onto a Nash profile of the $\mu$-supported game. What $\tau>0$ returns is equilibrium selection by the reference.</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Coupled tilts</h2>
+        <div class="controls">
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.06" max="2.40" step="0.02" value="0.55">
+          </label>
+          <label class="ctrl">Reference $\mu(L)$
+            <span class="val" id="mu-val"></span>
+            <input id="mu" type="range" min="0.05" max="0.95" step="0.01" value="0.50">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="QRE probability of L against tau"></svg>
+        <p class="legend"><span><i class="exp"></i> QRE $\rho(L)$</span><span>filled: this $\tau$</span><span>open: Nash corners $1$ and $0$</span></p>
+        <p class="note">Symmetric $2\times 2$ coordination: $(L,L)$ pays $(2,2)$, $(R,R)$ pays $(1,1)$, off-diagonal zero. Two pure Nash profiles, plus a mixed Nash at $\rho(L)=1/3$. The payoffs are illustrative; the coupled-tilt fixed point and the $\tau\to 0$ limit are the paper's. Shared $\mu$ on $\{L,R\}$.</p>
+      </section>
+      <section class="panel">
+        <h2>Forced at finite $\tau$</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$\rho(L)$</div><div class="v" id="rho-stat"></div></div>
+          <div class="stat"><div class="k">$\mathbb{E}[V\mid L]$</div><div class="v" id="eul-stat"></div></div>
+          <div class="stat"><div class="k">$\mathbb{E}[V\mid R]$</div><div class="v" id="eur-stat"></div></div>
+          <div class="stat"><div class="k">nearest Nash</div><div class="v" id="nash-stat"></div></div>
+        </div>
+        <div class="eqbox ok">
+          <div class="label">Quantal fixed point (exists at this $\tau$)</div>
+          <div class="nums" id="qre-eq"></div>
+        </div>
+        <div class="eqbox">
+          <div class="label">Nash as $\tau\to 0$</div>
+          <div class="nums" id="limit-eq"></div>
+        </div>
+        <div class="eqbox" id="sel-box">
+          <div class="label">Selection by the reference</div>
+          <div class="nums" id="sel-eq"></div>
+        </div>
+        <p>Drag $\mu(L)$ away from one half. The reference picks which Nash the cooling path approaches. That is Table 3's returned interest: equilibrium selection by the reference. At finite $\tau$ the softmax response is single-valued, so the joint map is a continuous self-map of a compact convex set: Brouwer, not Kakutani.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 5.2: when several agents choose against one another, $V_i=V_i(x_i,x_{-i})$. The object has each agent relax to a distribution against the others' distributions, $\rho_i\propto\mu_i\exp(\mathbb{E}_{\rho_{-i}}[V_i]/\tau)$. A joint fixed point of these coupled relaxations is a quantal response equilibrium (McKelvey and Palfrey 1995), which, in finite games, exists for every $\tau>0$ by Brouwer's theorem, the joint best-response being a continuous self-map of a compact convex set. The existence argument is cleaner than the one Nash equilibrium itself requires, because the softmax response is single-valued where the sharp best-response correspondence needs Kakutani.</p>
+    <p>Nash equilibrium is the $\tau\to 0$ limit, where the relaxation sharpens to exact best response and the quantal fixed point limits onto a Nash profile of the $\mu$-supported game, best response among the configurations the references carry. Strategic interaction is therefore the object with coupled value functions, and its solution concept is the bounded-rational equilibrium with Nash as the zero-temperature corner. Table 3 lists the recovery as forced, recovered by the $\tau\to 0$ limit of coupled tilts (QRE), and the interest it returns as equilibrium selection by the reference. Film III on <a href="https://ie.ii.inc">ie.ii.inc</a> is the zero-temperature limit.</p>
+    <p>The paper locates the prisoner's-dilemma cooperation puzzle on the same object: defection is the equilibrium on a disconnected, no-future interaction, and cooperation is what a connected, repeated interaction against a shared reference supports. That reading is not simulated here.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 5.2 (McKelvey and Palfrey 1995). PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/nash.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welfare at temperature — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · Part IV</p>
+    <h1>Welfare at temperature <span class="badge forced">forced</span></h1>
+    <p class="lede">By convex duality the clearing allocation maximises aggregate free energy. That is a first welfare theorem at temperature. The second follows by transfers in the numéraire. Both are doxa-conditional: Pareto is blind to $\mu$.</p>
+    <p>The paper reads welfare as value net of information costs (Table 3; section 6.1; Part IV on <a href="https://ie.ii.inc">ie.ii.inc</a>). The classical surplus theorem is the $\tau\to 0$ shadow. Efficiency inherits the reference: an allocation is efficient against a given doxa.</p>
+    <p>$$\sum_a\Bigl(\mathbb{E}_{\rho_a}[V_a]-\tau_a\,D_{\mathrm{KL}}(\rho_a\|\mu_a)\Bigr)$$</p>
+    <p>A group whose reference excludes some goods receives no weight there at any price, and the outcome still certifies as efficient. The normative content the theorems cannot carry — who is in the support — lives in the viability laws of section 4, which are prior to Pareto because Pareto is blind to $\mu$.</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Free energy, and a transfer</h2>
+        <div class="controls">
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.12" max="1.80" step="0.02" value="0.50">
+          </label>
+          <label class="ctrl">Endowment $\omega$
+            <span class="val" id="omega-val"></span>
+            <input id="omega" type="range" min="2" max="10" step="0.1" value="6.0">
+          </label>
+          <label class="ctrl">Numeraire transfer $T$ (1 to 2)
+            <span class="val" id="t-val"></span>
+            <input id="transfer" type="range" min="-2.0" max="2.0" step="0.05" value="0">
+          </label>
+          <label class="ctrl">Agent 2 support cut (exclude high $x$ from $\mu_2$)
+            <span class="val" id="cut-val"></span>
+            <input id="cut" type="range" min="0" max="6" step="1" value="0">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Choice against consumption"></svg>
+        <p class="legend"><span><i class="exp"></i> $\rho_1$</span><span><i class="alt"></i> $\rho_2$</span> <span>marks: means $x_1^*,x_2^*$</span></p>
+        <p class="note">Pure exchange, one good plus a numéraire, compact support $\{0,\ldots,10\}$. Illustrative $V_1(x)=2.2x-0.10x^2$, $V_2(x)=1.6x-0.08x^2$. The free-energy objective and the two theorems are the paper's; these $V$ numbers are not. Quasi-linear scope: a transfer $T$ moves the numéraire, not the goods allocation.</p>
+      </section>
+      <section class="panel">
+        <h2>Doxa-conditional efficiency</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$x_1^*$</div><div class="v" id="x1-stat"></div></div>
+          <div class="stat"><div class="k">$x_2^*$</div><div class="v" id="x2-stat"></div></div>
+          <div class="stat"><div class="k">$\sum\mathbb{E}[V]-\tau D_{\mathrm{KL}}$</div><div class="v" id="f-stat"></div></div>
+          <div class="stat"><div class="k">$\tau\to 0$ surplus</div><div class="v" id="shadow-stat"></div></div>
+        </div>
+        <div class="eqbox ok">
+          <div class="label">First theorem at temperature</div>
+          <div class="nums" id="first-eq"></div>
+        </div>
+        <div class="eqbox">
+          <div class="label">Second theorem — transfers in the numéraire</div>
+          <div class="nums" id="second-eq"></div>
+        </div>
+        <div class="eqbox" id="doxa-box">
+          <div class="label">What Pareto cannot see</div>
+          <div class="nums" id="doxa-eq"></div>
+        </div>
+        <p>Raise the support cut and $\mu_2$ assigns zero to high $x$. Those configurations stay at $\rho_2=0$ at every clearing price, and the allocation still maximises free energy against that doxa. Efficiency inherits the reference.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 6.1: by convex duality the clearing allocation maximises aggregate free energy $\sum_a\bigl(\mathbb{E}_{\rho_a}[V_a]-\tau_a D_{\mathrm{KL}}(\rho_a\|\mu_a)\bigr)$ over all feasible allocations: a first welfare theorem at temperature, welfare read as value net of information costs, with the classical surplus theorem as its $\tau\to 0$ shadow and the second theorem following by transfers in the numéraire.</p>
+    <p>What the derivation exposes is what Pareto cannot see. The maximised objective is conditional on the reference profile: an allocation is efficient against a given doxa, a group whose reference excludes some goods receives no weight there at any price, and the outcome still certifies as efficient. Efficiency inherits the reference. The welfare theorems are therefore doxa-conditional, and the normative content they cannot carry (who is in the support) lives in the viability laws of section 4, which are prior to Pareto because Pareto is blind to $\mu$. Table 3 lists clearing and welfare together as forced, and the interest they return as dissipative tâtonnement, welfare at temperature. Part IV on <a href="https://ie.ii.inc">ie.ii.inc</a> is this recovery.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3, section 6.1, and Part IV. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/welfare.js"></script>
+</body>
+</html>

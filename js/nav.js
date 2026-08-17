@@ -8,6 +8,9 @@
     { href: prefix + "derivations/demand.html", file: "demand.html", label: "Demand" },
     { href: prefix + "derivations/logit.html", file: "logit.html", label: "Logit" },
     { href: prefix + "derivations/producer.html", file: "producer.html", label: "Producer" },
+    { href: prefix + "derivations/clearing.html", file: "clearing.html", label: "Clearing" },
+    { href: prefix + "derivations/welfare.html", file: "welfare.html", label: "Welfare" },
+    { href: prefix + "derivations/nash.html", file: "nash.html", label: "Nash" },
     { href: prefix + "derivations/discounting.html", file: "discounting.html", label: "Discounting" },
     { href: prefix + "sources.md", file: "sources.md", label: "Sources" }
   ];
