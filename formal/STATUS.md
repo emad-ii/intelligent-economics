@@ -3,7 +3,7 @@
 Cite: Emad Mostaque, *Intelligent Economics*, May 2026, Table 3 and the body
 paragraphs named below. Site: https://ie.ii.inc. No invented equations.
 
-Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: this commit.
+Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: `65a2ff1`. Pass 5: this commit.
 
 ## Green
 
@@ -87,6 +87,12 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: this commit.
 
 - supp(rho*) = supp(mu_firm); excluded types unreachable at any internal incentive
 
+**Contracts** (`formal/sympy/contracts.py`) — section 5 / 6.1 identified, thin
+
+- principal sets V; rho* proportional to mu e^{V/tau}; mu inherited
+- D_KL(rho* || mu) = E[V]/tau - log Z (divergence no contract extracts)
+- flat V: rho* = mu
+
 ## Does not bind
 
 - Link 2 uniqueness (measurable \(\Rightarrow\) exponential). Lean candidate; no toolchain (`formal/lean/Discounting.lean`).
@@ -107,4 +113,6 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: this commit.
 - Euler: transversality (supplied); consumption-Euler (not in the paper).
 - Coase: site slider accounting; Kramers / quantitative Coase 1960.
 
-Stubs (contracts, MD, matching, growth, money): paper line only. Not formalised.
+- Contracts: optimal contract is inheritance; MD beyond the structure is its own literature.
+
+Stubs (MD, matching, growth, money): paper line only. Contracts stub page not rewritten.

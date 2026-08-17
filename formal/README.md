@@ -26,6 +26,7 @@ python formal/sympy/nash.py
 python formal/sympy/akerlof.py
 python formal/sympy/euler.py
 python formal/sympy/coase.py
+python formal/sympy/contracts.py
 ```
 
 Lean: `formal/lean/Discounting.lean`. Needs a Lean 4 toolchain. Until one is
