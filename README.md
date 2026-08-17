@@ -56,10 +56,10 @@ then visit `http://localhost:8080/`.
 | [derivations/logit.html](derivations/logit.html) | forced |
 | [derivations/producer.html](derivations/producer.html) | forced |
 | [derivations/discounting.html](derivations/discounting.html) | forced |
-| [derivations/contracts.html](derivations/contracts.html) | identified — not written |
-| [derivations/mechanism-design.html](derivations/mechanism-design.html) | identified — not written |
-| [derivations/matching.html](derivations/matching.html) | identified — not written |
-| [derivations/growth.html](derivations/growth.html) | identified — not written |
-| [derivations/money.html](derivations/money.html) | identified — not written |
+| [derivations/contracts.html](derivations/contracts.html) | identified — stub |
+| [derivations/mechanism-design.html](derivations/mechanism-design.html) | identified — stub |
+| [derivations/matching.html](derivations/matching.html) | identified — stub |
+| [derivations/growth.html](derivations/growth.html) | identified — stub |
+| [derivations/money.html](derivations/money.html) | identified — stub |
 
 No pages for tax/ETI, Solow, cycles, public goods, IV, unemployment, open economy, CAPM, term structure, development, gravity, crypto, or fiscal theory.

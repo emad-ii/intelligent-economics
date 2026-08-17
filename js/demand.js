@@ -67,7 +67,7 @@ function demandAt(p1, p2, tau, alpha) {
   var S = [[0, 0], [0, 0]], i, j;
   for (i = 0; i < 2; i++) {
     for (j = 0; j < 2; j++) {
-      S[i][j] = -cov[i][j] / tau + covXd[i][j];
+      S[i][j] = -(cov[i][j] + covXd[i][j]) / tau;
     }
   }
   return {
@@ -111,8 +111,8 @@ function initDemand() {
     document.getElementById("split-eq").innerHTML =
       "−Cov/τ  = [[" + fmt( -cur.cov[0][0] / tau) + ", " + fmt(-cur.cov[0][1] / tau) + "], [" +
       fmt(-cur.cov[1][0] / tau) + ", " + fmt(-cur.cov[1][1] / tau) + "]]<br>" +
-      "Cov(x, ∂_p log μ)  = [[" + fmt(cur.covXd[0][0]) + ", " + fmt(cur.covXd[0][1]) + "], [" +
-      fmt(cur.covXd[1][0]) + ", " + fmt(cur.covXd[1][1]) + "]]<br>" +
+      "Cov(x, ∂_p log μ)/τ  = [[" + fmt(cur.covXd[0][0] / tau) + ", " + fmt(cur.covXd[0][1] / tau) + "], [" +
+      fmt(cur.covXd[1][0] / tau) + ", " + fmt(cur.covXd[1][1] / tau) + "]]<br>" +
       "antisymmetric |S12 − S21| = " + fmt(asym, 4);
 
     var W = 640, H = 280, L = 48, R = 18, top = 16, bot = 36;
