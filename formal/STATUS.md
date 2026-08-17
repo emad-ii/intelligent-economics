@@ -3,7 +3,7 @@
 Cite: Emad Mostaque, *Intelligent Economics*, May 2026, Table 3 and the body
 paragraphs named below. Site: https://ie.ii.inc. No invented equations.
 
-Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: `65a2ff1`. Pass 5: this commit.
+Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: `65a2ff1`. Pass 5: `c8091ee`. Pass 6: this commit.
 
 ## Green
 
@@ -93,6 +93,25 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: `65a2ff1`. Pass
 - D_KL(rho* || mu) = E[V]/tau - log Z (divergence no contract extracts)
 - flat V: rho* = mu
 
+**Mechanism design** (`formal/sympy/mechanism_design.py`) — §5 / §6.1 identified, thin
+
+- designer chooses V against inherited μ
+- same V, different μ ⇒ different ρ* (doxa not contractible)
+- supp(ρ*) ⊆ supp(μ)
+
+**Matching / search** (`formal/sympy/matching.py`) — §5 / §3 identified, thin
+
+- ∇ log(ρ*/μ) = ∇V/τ (search inherits the kinetic integrand)
+- rest point: (1/4)||∇V/τ||² = (1/4)||∇ log(ρ*/μ)||²
+
+**Growth** (`formal/sympy/growth.py`) — §5 identified, thin
+
+- supp(ρ*) = supp(μ); widening μ widens reachable support
+
+**Money** (`formal/sympy/money.py`) — §4.5 / §6.1 identified, thin
+
+- money is a maintained μ-concentration in the exchange domain
+
 ## Does not bind
 
 - Link 2 uniqueness (measurable \(\Rightarrow\) exponential). Lean candidate; no toolchain (`formal/lean/Discounting.lean`).
@@ -114,5 +133,9 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: `65a2ff1`. Pass
 - Coase: site slider accounting; Kramers / quantitative Coase 1960.
 
 - Contracts: optimal contract is inheritance; MD beyond the structure is its own literature.
+- MD: revelation principle / IC-IR optimal mechanism. Inheritance.
+- Matching function. Inheritance. Path-space Girsanov of K_info not re-proved.
+- BGP / production function / growth rate. Inheritance. Intelligence non-rival is a trait, not an equation.
+- Money: numéraire / circuits / quantity equation. §6.1 defers. Not invented.
 
-Stubs (MD, matching, growth, money): paper line only. Contracts stub page not rewritten.
+Stub pages (contracts, MD, matching, growth, money) not rewritten.
