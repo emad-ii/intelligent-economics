@@ -5,6 +5,9 @@
   var prefix = inDer ? "../" : "";
   var items = [
     { href: prefix + "index.html", file: "index.html", label: "Spine" },
+    { href: prefix + "derivations/demand.html", file: "demand.html", label: "Demand" },
+    { href: prefix + "derivations/logit.html", file: "logit.html", label: "Logit" },
+    { href: prefix + "derivations/producer.html", file: "producer.html", label: "Producer" },
     { href: prefix + "derivations/discounting.html", file: "discounting.html", label: "Discounting" },
     { href: prefix + "sources.md", file: "sources.md", label: "Sources" }
   ];

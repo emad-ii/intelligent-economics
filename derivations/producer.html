@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producer / supply — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">§6.1 · Fig. 7 on ie.ii.inc</p>
+    <h1>Producer / supply <span class="badge forced">forced</span></h1>
+    <p class="lede">A producer facing the same price supplies with slope $+\mathrm{Cov}(y)/\tau$. Supply slopes up by the same convexity that made demand slope down. The textbook crossing is two convexities facing each other across one constraint.</p>
+    <p>The paper derives the producer tilt $e^{(p\cdot y-c(y))/\tau}$ once price is the multiplier on a shared resource constraint (section 6.1; Fig. 7). Demand was $-\mathrm{Cov}(x)/\tau$. Supply is the other sign of the same Hessian.</p>
+    <p>$$\frac{\partial y^*}{\partial p}=+\frac{\mathrm{Cov}(y)}{\tau}\succeq 0$$</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Two convexities</h2>
+        <div class="controls">
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.12" max="1.80" step="0.02" value="0.45">
+          </label>
+          <label class="ctrl">Price $p$
+            <span class="val" id="price-val"></span>
+            <input id="price" type="range" min="0.05" max="1.60" step="0.01" value="0.40">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Supply and demand against price"></svg>
+        <p class="legend"><span><i class="exp"></i> supply $y^*(p)$</span><span><i class="alt"></i> demand $x^*(p)$</span> <span>open: crossing</span></p>
+        <p class="note">One good, compact support $\{0,\ldots,10\}$. Demand is the section 5 tilt $V=-p\,x$ on a uniform reference. Supply uses the section 6.1 tilt $e^{(py-c(y))/\tau}$. The particular $c(y)=0.12\,y^2$ is illustrative; the slope $+\mathrm{Cov}(y)/\tau$ is the paper&rsquo;s. Quasi-linear scope, as declared.</p>
+      </section>
+      <section class="panel">
+        <h2>Same Hessian, other sign</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$y^*$</div><div class="v" id="y-stat"></div></div>
+          <div class="stat"><div class="k">$x^*$</div><div class="v" id="x-stat"></div></div>
+          <div class="stat"><div class="k">$+\mathrm{Var}(y)/\tau$</div><div class="v" id="ss-stat"></div></div>
+          <div class="stat"><div class="k">$-\mathrm{Var}(x)/\tau$</div><div class="v" id="sd-stat"></div></div>
+        </div>
+        <div class="eqbox ok">
+          <div class="label">Producer — slope forced nonnegative</div>
+          <div class="nums" id="sup-eq"></div>
+        </div>
+        <div class="eqbox">
+          <div class="label">Demand — the other convexity</div>
+          <div class="nums" id="dem-eq"></div>
+        </div>
+        <div class="eqbox">
+          <div class="label">Fig. 7 reading</div>
+          <div class="nums" id="cross-eq"></div>
+        </div>
+        <p>Cooling $\tau\to 0$ collapses curvature into kinks. That is where the paper locates non-uniqueness and tâtonnement instability. Income effects are not claimed.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 6.1: a producer facing the same price supplies with slope $\partial y^*/\partial p=+\mathrm{Cov}(y)/\tau\succeq 0$. Supply slopes up by the same convexity that made demand slope down, and the textbook crossing is two convexities facing each other across one constraint. Producers enter the aggregate free energy through the tilt $e^{(p\cdot y-c(y))/\tau}$. Fig. 7 on <a href="https://ie.ii.inc">ie.ii.inc</a> is this picture: tâtonnement as a gradient flow, the crossing as two convexities.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, section 6.1. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/producer.js"></script>
+</body>
+</html>

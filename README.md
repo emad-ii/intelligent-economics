@@ -27,9 +27,10 @@ Notes-only and absent fields stay off this site.
 
 ## Add order
 
-1. **Discounting** (this commit) — `forced`
-2. **Stubs** (this commit): contracts, mechanism design, matching, growth, money — `identified`
-3. Notes-only and absent fields stay off
+1. **Demand / Slutsky, logit, producer** (this commit) — `forced`, already live on ie.ii.inc / paper Table 3 and §6.1
+2. **Discounting** — `forced`
+3. **Stubs**: contracts, mechanism design, matching, growth, money — `identified`
+4. Notes-only and absent fields stay off
 
 ## Open locally
 
@@ -51,6 +52,9 @@ then visit `http://localhost:8080/`.
 
 | Path | Status |
 | --- | --- |
+| [derivations/demand.html](derivations/demand.html) | forced |
+| [derivations/logit.html](derivations/logit.html) | forced |
+| [derivations/producer.html](derivations/producer.html) | forced |
 | [derivations/discounting.html](derivations/discounting.html) | forced |
 | [derivations/contracts.html](derivations/contracts.html) | identified — not written |
 | [derivations/mechanism-design.html](derivations/mechanism-design.html) | identified — not written |

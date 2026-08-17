@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demand / Slutsky — Intelligent Economics working tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,560&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="brand" href="../index.html">Intelligent Economics <small>working tree</small></a>
+      <nav class="site" id="site-nav"></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="kicker">Table 3 · Film I on ie.ii.inc</p>
+    <h1>Demand / Slutsky <span class="badge forced">forced</span></h1>
+    <p class="lede">A linear price tilt of the forced law makes mean choice the envelope of $\log Z$. Slutsky symmetry and negativity are that scalar&rsquo;s convexity. The dividend is measured asymmetry: when $\mu$ carries price, the antisymmetric part estimates the reference.</p>
+    <p>The paper recovers the demand system as the envelope derivative of the log-partition function under $V(x)=-p\cdot x$ (Table 3; section 5; film I). No utility is posited. Income effects live in a richer $V$ that encodes the budget, and are not claimed here.</p>
+    <p>$$x^*(p)=-\tau\nabla_p\log Z,\qquad \frac{\partial x^*}{\partial p}=-\tau\nabla_p^2\log Z$$</p>
+    <p>When $\mu$ is price-independent the Hessian is $-\mathrm{Cov}(x)/\tau$: symmetric because mixed partials of a scalar commute, negative semidefinite because $\log Z$ is a convex cumulant generating function. When the reference carries price, $\mu=\mu(x;p)$, the response is</p>
+    <p>$\frac{\partial x_i^*}{\partial p_j}=-\frac{1}{\tau}\mathrm{Cov}(x_i,x_j)+\mathrm{Cov}\bigl(x_i,\partial_{p_j}\log\mu\bigr)$</p>
+    <p>The first term is symmetric, so all measured asymmetry sits in the second. That is the estimator.</p>
+    <div class="grid-2">
+      <section class="panel">
+        <h2>The forced demand</h2>
+        <div class="controls">
+          <label class="ctrl">Information price $\tau$
+            <span class="val" id="tau-val"></span>
+            <input id="tau" type="range" min="0.12" max="1.80" step="0.02" value="0.70">
+          </label>
+          <label class="ctrl">Price $p_1$
+            <span class="val" id="p1-val"></span>
+            <input id="p1" type="range" min="0.20" max="2.20" step="0.02" value="0.55">
+          </label>
+          <label class="ctrl">Price $p_2$
+            <span class="val" id="p2-val"></span>
+            <input id="p2" type="range" min="0.20" max="2.20" step="0.02" value="0.55">
+          </label>
+          <label class="ctrl">Price dependence of $\mu$ (fairness anchor on good 1)
+            <span class="val" id="alpha-val"></span>
+            <input id="alpha" type="range" min="0" max="1.20" step="0.02" value="0">
+          </label>
+        </div>
+        <svg class="plot" id="plot" viewBox="0 0 640 280" role="img" aria-label="Demand against p1"></svg>
+        <p class="legend"><span><i class="exp"></i> $x_1^*(p_1)$</span><span><i class="alt"></i> $x_2^*(p_1)$</span> <span>marks: current $p_1$</span></p>
+        <p class="note">Compact support: bundles $(x_1,x_2)$ on $\{0,1,2,3,4\}^2$. Base $\mu$ is uniform. The fairness-anchor form $\log\mu=-\alpha\,x_2(p_1-\bar p_1)$ is illustrative of the class the paper names (reference prices, fairness anchors, the customary price): $p_1$ tilts the reference for good 2. The response formula is the paper&rsquo;s; this particular $\mu(x;p)$ is not.</p>
+      </section>
+      <section class="panel">
+        <h2>Slutsky, and the estimator</h2>
+        <div class="stats">
+          <div class="stat"><div class="k">$x_1^*$</div><div class="v" id="x1-stat"></div></div>
+          <div class="stat"><div class="k">$x_2^*$</div><div class="v" id="x2-stat"></div></div>
+          <div class="stat"><div class="k">$|S_{12}-S_{21}|$</div><div class="v" id="asym-stat"></div></div>
+        </div>
+        <p class="note">Slutsky $S=-\tau\nabla_p^2\log Z$, evaluated from the paper&rsquo;s covariance split.</p>
+        <div class="eqbox" id="sym-box">
+          <div class="label">Slutsky matrix</div>
+          <div class="matrix" id="S-mat">
+            <div class="cell" id="s00"></div>
+            <div class="cell" id="s01"></div>
+            <div class="cell" id="s10"></div>
+            <div class="cell" id="s11"></div>
+          </div>
+        </div>
+        <div class="eqbox ok" id="split-box">
+          <div class="label">Decomposition at this $(p,\tau)$</div>
+          <div class="nums" id="split-eq"></div>
+        </div>
+        <p>At $\alpha=0$ the reference is price-independent and $S$ is symmetric. Raise $\alpha$ and the antisymmetric part is the handle on $\mu$&rsquo;s price dependence. Dividend: measured asymmetry.</p>
+      </section>
+    </div>
+    <h2>What the paper states</h2>
+    <p>From section 5: with a linear value tilt $V(x)=-p\cdot x$, the mean choice is $x^*(p)=-\tau\nabla_p\log Z$, the demand system; its response is the Slutsky matrix $\partial x^*/\partial p=-\tau\nabla_p^2\log Z$. Both textbook properties follow in one stroke: the matrix is symmetric because mixed partials of a scalar commute, and negative semidefinite because $\log Z$ is convex in $p$ as a cumulant generating function. Slutsky symmetry and negativity are the single fact that $\log Z$ is a convex cumulant generating function, with no utility posited.</p>
+    <p>When $\mu=\mu(x;p)$, the first covariance term stays symmetric, so all asymmetry in a measured demand Jacobian sits in $\mathrm{Cov}(x_i,\partial_{p_j}\log\mu)$. Under the maintained linear tilt and constant $\tau$, the antisymmetric part is an estimate of the reference&rsquo;s price dependence. Table 3 lists the recovery as forced, and the interest it returns as the Slutsky-asymmetry estimator. Film I on <a href="https://ie.ii.inc">ie.ii.inc</a> is this derivation.</p>
+    <p>Cite: Emad Mostaque, <em>Intelligent Economics</em>, May 2026, Table 3 and section 5. PDFs: <a href="https://webstatics.ii.inc/microsites/common-wealth/pdfs/intelligent-economics.pdf">webstatics PDF</a>, <a href="https://thesis.ii.inc/papers/intelligent-economics.pdf">thesis.ii.inc PDF</a>.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Working tree · <a href="../sources.md">sources</a></span>
+      <span>Cite the paper. Do not copy the book.</span>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+  <script src="../js/demand.js"></script>
+</body>
+</html>
