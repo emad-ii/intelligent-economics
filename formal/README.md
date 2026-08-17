@@ -15,6 +15,11 @@ Run (SymPy required):
 ```
 python formal/sympy/discounting.py
 python formal/sympy/demand_slutsky.py
+python formal/sympy/logit.py
+python formal/sympy/producer.py
+python formal/sympy/black_scholes.py
+python formal/sympy/landauer.py
+python formal/sympy/lucas.py
 ```
 
 Lean: `formal/lean/Discounting.lean`. Needs a Lean 4 toolchain. Until one is
