@@ -20,6 +20,7 @@ python formal/sympy/producer.py
 python formal/sympy/black_scholes.py
 python formal/sympy/landauer.py
 python formal/sympy/lucas.py
+python formal/sympy/clearing.py
 ```
 
 Lean: `formal/lean/Discounting.lean`. Needs a Lean 4 toolchain. Until one is

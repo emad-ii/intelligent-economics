@@ -3,7 +3,7 @@
 Cite: Emad Mostaque, *Intelligent Economics*, May 2026, Table 3 and the body
 paragraphs named below. Site: https://ie.ii.inc. No invented equations.
 
-Pass 1: `d2642b3`. Pass 2: this commit.
+Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: this commit.
 
 ## Green
 
@@ -50,6 +50,14 @@ Pass 1: `d2642b3`. Pass 2: this commit.
 - \(\mu_n\propto\mu_0 e^{n V/\tau}\) concentrates on \(\arg\max V\)
 - point mass on the maximiser is a fixed point
 
+**GE / clearing** (`formal/sympy/clearing.py`) — Table 3 / §6.1 / Fig. 7
+
+- z(p) = -Phi'(p) with z = x* - y* - omega
+- Phi'' = (Var(x)+Var(y))/tau (convex)
+- Phi' = 0 iff x* - y* = omega
+- consumer price tilt x* = -tau d_p log Z_c; producer y* = +tau d_p log Z_s
+
+
 ## Does not bind
 
 - Link 2 uniqueness (measurable \(\Rightarrow\) exponential). Lean candidate; no toolchain (`formal/lean/Discounting.lean`).
@@ -60,5 +68,8 @@ Pass 1: `d2642b3`. Pass 2: this commit.
 - Landauer joule magnitude. Inheritance \(\tau=k_B T\).
 - Link 4 Langevin \(\to\rho^*\). Named in §5.1; not algebra.
 - Live-page extras that are not paper objects: particular \(c(y)\); adaptation-rate mixture; \(\tau\) as a fitted logit scale.
+
+- Clearing existence/coercivity; tatonnement ODE; tau->0 kinks / SMD. Named in section 6.1; not algebra. Quasi-linear scope. Welfare is a later tag.
+- Live-page u(x) on the clearing page is illustrative.
 
 Stubs (contracts, MD, matching, growth, money): paper line only. Not formalised.
