@@ -3,7 +3,7 @@
 Cite: Emad Mostaque, *Intelligent Economics*, May 2026, Table 3 and the body
 paragraphs named below. Site: https://ie.ii.inc. No invented equations.
 
-Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: this commit.
+Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: `b2cc1fc`. Pass 4: this commit.
 
 ## Green
 
@@ -58,6 +58,35 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: this commit.
 - consumer price tilt x* = -tau d_p log Z_c; producer y* = +tau d_p log Z_s
 
 
+
+**Welfare** (`formal/sympy/welfare.py`) — Table 3 / §6.1 / Part IV
+
+- F[rho*] = tau log Z
+- F[rho*] - F[rho] = tau KL(rho || rho*)
+- constant numeraire transfer leaves rho*
+- tau->0 shadow is max V (probe)
+
+**Nash / QRE** (`formal/sympy/nash.py`) — Table 3 / §5.2 / film III
+
+- coupled tilt rho_i ∝ mu_i exp(E_{rho_{-i}}[V_i]/tau)
+- at indifference, rho = mu
+- tau->0 softmax -> exact BR
+- finite-tau QRE is not a point-mass BR
+
+**Akerlof** (`formal/sympy/akerlof.py`) — §6.1 / Fig. 6 identified
+
+- mu <- (selection o tilt); a zeroed type stays zero
+- tilt without selection is the Lucas iteration
+
+**Euler** (`formal/sympy/euler.py`) — Table 3 / §5
+
+- interior mode: grad V = -tau grad log mu
+- tau->0 drops the correction
+
+**Coase** (`formal/sympy/coase.py`) — §6.2 identified, not a Table 3 row
+
+- supp(rho*) = supp(mu_firm); excluded types unreachable at any internal incentive
+
 ## Does not bind
 
 - Link 2 uniqueness (measurable \(\Rightarrow\) exponential). Lean candidate; no toolchain (`formal/lean/Discounting.lean`).
@@ -71,5 +100,11 @@ Pass 1: `d2642b3`. Pass 2: `71a2b97`. Pass 3: this commit.
 
 - Clearing existence/coercivity; tatonnement ODE; tau->0 kinks / SMD. Named in section 6.1; not algebra. Quasi-linear scope. Welfare is a later tag.
 - Live-page u(x) on the clearing page is illustrative.
+
+- Welfare named duality min Phi = max feasible Sigma F; viability laws of section 4.
+- Nash: Brouwer existence; PD cooperation reading.
+- Akerlof: warranties/disclosure; Spence; finite-sample collapse.
+- Euler: transversality (supplied); consumption-Euler (not in the paper).
+- Coase: site slider accounting; Kramers / quantitative Coase 1960.
 
 Stubs (contracts, MD, matching, growth, money): paper line only. Not formalised.
